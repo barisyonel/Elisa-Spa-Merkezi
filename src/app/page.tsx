@@ -1,12 +1,22 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Heart, Star, Phone, MapPin, Clock, Baby, Shirt, Waves, Menu, X, Eye, Plus, Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
+import { useState } from 'react';
+import { Heart, Star, Phone, MapPin, Clock, Baby, Shirt, Waves, Menu, X, Eye, Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('boutique');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState<{
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    price: string;
+    features: string[];
+    details: string;
+    sizes: string[];
+    colors: string[];
+  } | null>(null);
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -117,7 +127,7 @@ export default function Home() {
                 className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center"
               >
                 <Instagram className="w-5 h-5 mr-2" />
-                Instagram'da Takip Et
+                Instagram&apos;da Takip Et
               </a>
             </div>
           </div>
@@ -483,7 +493,7 @@ export default function Home() {
                   ))}
                 </div>
                 
-                <p className="text-gray-600 mb-4 italic">"{testimonial.comment}"</p>
+                <p className="text-gray-600 mb-4 italic">&ldquo;{testimonial.comment}&rdquo;</p>
                 
                 <div className="text-sm text-pink-500 font-medium">
                   {testimonial.service}
